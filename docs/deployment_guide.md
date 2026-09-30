@@ -124,7 +124,22 @@ job history are always kept.
    ATTENDSMART_SECRET_KEY=<long random string>
    ```
 
-### B1. Put the webhook on a public HTTPS URL
+### B1. Choose: no webhook (default) or webhook
+
+**No webhook (default; works with Streamlit-only hosting).** Dialogflow does
+the intent and entity matching. The app then builds the answer itself with
+the same `fulfillment.py`, using the logged-in user's identity, so RBAC is
+unchanged. Skip the rest of B1, keep `DIALOGFLOW_USE_WEBHOOK=false`, and run
+B2 *without* `--webhook-url`. On Streamlit Cloud, put these in *Secrets*:
+```toml
+DIALOGFLOW_PROJECT_ID = "<gcp-project-id>"
+GOOGLE_CREDENTIALS_JSON = '''<paste the whole key JSON>'''
+```
+
+**With webhook (optional).** Only needed if you want Dialogflow itself to call
+your API. Streamlit Cloud can't host it, so it needs a separate public host.
+
+### B1a. Put the webhook on a public HTTPS URL
 Dialogflow has to reach `POST /dialogflow/webhook`. Pick one option:
 
 - **For development:** run `uvicorn api.main:app --port 8000`, then
@@ -147,7 +162,8 @@ Check the deployment with `curl https://<host>/health`.
 
 ### B2. Sync the agent via the API
 ```bash
-python -m chatbot.sync_dialogflow_agent --webhook-url https://<host>/dialogflow/webhook
+python -m chatbot.sync_dialogflow_agent            # no webhook
+python -m chatbot.sync_dialogflow_agent --webhook-url https://<host>/dialogflow/webhook   # webhook mode (also set DIALOGFLOW_USE_WEBHOOK=true)
 ```
 The sync is idempotent. It:
 - creates or updates the `@student_name` entity, with all roster names and

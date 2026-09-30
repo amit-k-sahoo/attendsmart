@@ -3,7 +3,7 @@ AttendSmart — push the agent to Dialogflow ES via the API (recommended over zi
 
 Creates or updates, idempotently:
   - the @student_name entity (all roster names + first-name synonyms)
-  - every intent in chatbot/agent_spec.py (webhook fulfillment enabled)
+  - every intent in chatbot/agent_spec.py (webhook fulfillment only with --webhook-url)
   - optionally the agent's fulfillment webhook URL + basic-auth credentials
 then trains the agent.
 
@@ -12,7 +12,7 @@ GOOGLE_APPLICATION_CREDENTIALS pointing at a service-account key with the
 "Dialogflow API Admin" role.
 
 Usage:
-  python -m chatbot.sync_dialogflow_agent
+  python -m chatbot.sync_dialogflow_agent      # NLU only; the app fulfils answers itself
   python -m chatbot.sync_dialogflow_agent --webhook-url https://<host>/dialogflow/webhook
 """
 
@@ -54,7 +54,7 @@ def sync_entity(project):
         print("Created entity @student_name")
 
 
-def build_intent(spec):
+def build_intent(spec, use_webhook):
     phrases = []
     for i, phrase in enumerate(spec["phrases"]):
         parts = [dialogflow.Intent.TrainingPhrase.Part(
@@ -76,19 +76,20 @@ def build_intent(spec):
         parameters=params,
         messages=[dialogflow.Intent.Message(
             text=dialogflow.Intent.Message.Text(text=[spec["response"]]))],
-        webhook_state=dialogflow.Intent.WebhookState.WEBHOOK_STATE_ENABLED,
+        webhook_state=(dialogflow.Intent.WebhookState.WEBHOOK_STATE_ENABLED if use_webhook
+                       else dialogflow.Intent.WebhookState.WEBHOOK_STATE_UNSPECIFIED),
         events=["WELCOME"] if spec["name"] == "Welcome" else [],
     )
 
 
-def sync_intents(project):
+def sync_intents(project, use_webhook):
     client = dialogflow.IntentsClient()
     parent = f"projects/{project}/agent"
     existing = {i.display_name: i for i in client.list_intents(
         request={"parent": parent, "intent_view": dialogflow.IntentView.INTENT_VIEW_FULL})}
 
     for spec in INTENTS:
-        intent = build_intent(spec)
+        intent = build_intent(spec, use_webhook)
         target = existing.get(spec["name"])
         if spec["name"] == "Welcome" and not target and DEFAULT_WELCOME in existing:
             target = existing[DEFAULT_WELCOME]
@@ -134,7 +135,7 @@ def main():
         sys.exit("Set DIALOGFLOW_PROJECT_ID in .env or pass --project.")
 
     sync_entity(args.project)
-    sync_intents(args.project)
+    sync_intents(args.project, use_webhook=bool(args.webhook_url))
     if args.webhook_url:
         sync_webhook(args.project, args.webhook_url)
     if not args.no_train:

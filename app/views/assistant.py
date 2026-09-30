@@ -26,6 +26,8 @@ def _ask(engine, text):
     meta = f"{res['source']} · intent `{res['intent']}`"
     if res.get("confidence") is not None:
         meta += f" · confidence {res['confidence']:.2f}"
+    if res.get("timing"):
+        meta += f" · {res['timing']}"
     st.session_state.chat_history.append({"role": "assistant", "text": res["text"], "meta": meta})
 
 

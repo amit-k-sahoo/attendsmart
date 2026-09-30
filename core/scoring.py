@@ -69,6 +69,9 @@ def _local_model():
     return _model
 
 
+_http = requests.Session()  # keep-alive: avoids a new TLS handshake per call
+
+
 def _score_azure(df: pd.DataFrame) -> list:
     payload = {"input_data": {"columns": FEATURES,
                               "data": df[FEATURES].astype(float).round(4).values.tolist()}}
@@ -76,7 +79,7 @@ def _score_azure(df: pd.DataFrame) -> list:
                "Content-Type": "application/json"}
     if settings.azureml_deployment:  # pin a deployment (e.g. during blue/green rollout)
         headers["azureml-model-deployment"] = settings.azureml_deployment
-    resp = requests.post(settings.azureml_endpoint_url, json=payload, headers=headers,
+    resp = _http.post(settings.azureml_endpoint_url, json=payload, headers=headers,
                          timeout=settings.azureml_timeout_s)
     resp.raise_for_status()
     body = resp.json()

@@ -49,6 +49,7 @@ class Settings:
     dialogflow_language: str
     dialogflow_webhook_user: str
     dialogflow_webhook_password: str
+    dialogflow_use_webhook: bool
 
     @property
     def azureml_enabled(self) -> bool:
@@ -80,6 +81,7 @@ def load_settings() -> Settings:
         dialogflow_language=_env("DIALOGFLOW_LANGUAGE") or "en",
         dialogflow_webhook_user=_env("DIALOGFLOW_WEBHOOK_USER"),
         dialogflow_webhook_password=_env("DIALOGFLOW_WEBHOOK_PASSWORD"),
+        dialogflow_use_webhook=_env("DIALOGFLOW_USE_WEBHOOK", "false").lower() == "true",
     )
 
 

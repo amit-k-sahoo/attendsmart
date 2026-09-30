@@ -8,6 +8,7 @@ chatbot/fulfillment.py, so behaviour and RBAC are identical.
 """
 
 import logging
+import time
 
 from core.config import settings
 from chatbot import fulfillment
@@ -33,15 +34,26 @@ class ChatEngine:
         if settings.dialogflow_enabled:
             try:
                 from chatbot.dialogflow_client import detect_intent
+                t0 = time.perf_counter()
                 df = detect_intent(message, self.session_id, self.identity)
-                if df["webhook_ok"]:
+                df_ms = round((time.perf_counter() - t0) * 1000)
+                if not df["params_complete"]:
+                    # Dialogflow is slot-filling (e.g. asking which student); relay its prompt.
+                    return {"intent": df["intent"], "text": df["text"], "source": "dialogflow",
+                            "confidence": df["confidence"], "timing": f"dialogflow {df_ms}ms"}
+                if settings.dialogflow_use_webhook and df["webhook_ok"]:
                     return {"intent": df["intent"], "text": df["text"], "source": "dialogflow",
                             "confidence": df["confidence"]}
-                # NLU worked but our webhook didn't answer: fulfil locally with DF's intent.
-                log.warning("Dialogflow webhook failed: %s", df["webhook_message"])
+                # Dialogflow does the NLU; fulfil locally with its intent. This is the normal
+                # path without a webhook, and the fallback if the webhook fails.
+                if settings.dialogflow_use_webhook:
+                    log.warning("Dialogflow webhook failed: %s", df["webhook_message"])
+                t1 = time.perf_counter()
                 res = fulfillment.fulfill(df["intent"], df["parameters"], self.identity, message)
+                ful_ms = round((time.perf_counter() - t1) * 1000)
                 return dict(res, source="dialogflow-nlu+local-fulfillment",
-                            confidence=df["confidence"])
+                            confidence=df["confidence"],
+                            timing=f"dialogflow {df_ms}ms + answer {ful_ms}ms")
             except Exception as exc:
                 log.warning("Dialogflow unavailable, using local NLU: %s", exc)
                 res = self._local(message)
