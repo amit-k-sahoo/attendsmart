@@ -103,6 +103,28 @@ This deletes only the deployment. The endpoint keeps its scoring URL and key, so
 `--delete-endpoint` to remove the endpoint as well. The model, data asset and
 job history are always kept.
 
+### A6. Start/stop from the deployed app (admin → System status)
+The app can start and stop the deployment itself (it only ever touches the
+deployment, so the endpoint URL/key never change). Streamlit Cloud has no
+`az login`, so give it a service principal limited to the resource group:
+```bash
+az ad sp create-for-rbac --name attendsmart-control --role Contributor \
+  --scopes /subscriptions/<subscription-id>/resourceGroups/<resource-group>
+```
+Add its output and the workspace details to the app's Secrets (top level):
+```
+AZURE_TENANT_ID = "<tenant>"
+AZURE_CLIENT_ID = "<appId>"
+AZURE_CLIENT_SECRET = "<password>"
+AZURE_SUBSCRIPTION_ID = "<subscription-id>"
+AZURE_RESOURCE_GROUP = "attendsmart-rg"
+AZUREML_WORKSPACE = "attendsmart-ws"
+AZUREML_ENDPOINT_NAME = "<endpoint name from .env>"
+```
+The endpoint must already exist (created once by `./attendsmart.sh start`).
+Anyone with an admin login can bill the subscription, so keep admin accounts
+to people you trust.
+
 ---
 
 ## Part B — Dialogflow ES

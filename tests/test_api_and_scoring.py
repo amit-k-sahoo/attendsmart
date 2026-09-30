@@ -111,7 +111,7 @@ def test_azure_success_path(monkeypatch):
     def fake_post(url, json, headers, timeout):
         captured.update(headers=headers, body=json)
         return Resp()
-    monkeypatch.setattr(scoring.requests, "post", fake_post)
+    monkeypatch.setattr(scoring._http, "post", fake_post)
     res = scoring.score_rows(df)
     assert res[0]["backend"] == "azureml"
     assert captured["headers"]["Authorization"] == "Bearer k"

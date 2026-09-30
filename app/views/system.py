@@ -3,9 +3,55 @@ import time
 import streamlit as st
 
 from auth_state import current_user, require_admin
-from core import scoring
+from core import azure_control, scoring
 from core.audit import log_event
 from core.config import settings
+
+
+_LABELS = {  # deployment state -> (badge, billing?)
+    None: ("⚪ Stopped", "Not billing. The app scores with the local model."),
+    "Creating": ("🟡 Starting…", "Billing. Takes roughly 5–15 minutes; the app keeps using the local model meanwhile."),
+    "Updating": ("🟡 Starting…", "Billing."),
+    "Succeeded": ("🟢 Live", "Billing hourly while running."),
+    "Deleting": ("🟠 Stopping…", "Shutting down; billing ends shortly."),
+    "Failed": ("🔴 Failed", "Check Azure ML Studio → Endpoints → Logs, then Stop and Start again."),
+}
+
+
+@st.fragment(run_every="15s")
+def _deployment_status():
+    try:
+        azure_control.reconcile()
+        s = azure_control.state()
+    except Exception as exc:  # credentials, network, permissions
+        st.error(f"Couldn't read Azure state: {type(exc).__name__}: {str(exc)[:200]}")
+        return
+    if not s["endpoint"]:
+        st.warning("The endpoint doesn't exist yet. Create it once with `./attendsmart.sh start`.")
+        return
+    badge, note = _LABELS.get(s["deployment"], (f"⚪ {s['deployment']}", ""))
+    st.markdown(f"**{badge}** — {note}")
+
+
+def _deployment_panel(user):
+    st.markdown("##### Deployment control")
+    _deployment_status()
+    c1, c2 = st.columns(2)
+    sure = c1.checkbox("I understand a running deployment bills hourly", key="az_sure")
+    if c1.button("▶ Start Azure scoring", disabled=not sure, use_container_width=True):
+        try:
+            azure_control.start()
+            log_event(user, "azure_deployment_start", details=azure_control.INSTANCE_TYPE)
+            st.success("Starting — this panel updates on its own.")
+        except Exception as exc:
+            st.error(f"Start failed: {type(exc).__name__}: {str(exc)[:300]}")
+    if c2.button("⏹ Stop Azure scoring (stop billing)", use_container_width=True):
+        try:
+            azure_control.stop()
+            log_event(user, "azure_deployment_stop")
+            st.success("Stopping — billing ends once the deployment is deleted.")
+        except Exception as exc:
+            st.error(f"Stop failed: {type(exc).__name__}: {str(exc)[:300]}")
 
 
 def render():
@@ -25,6 +71,8 @@ def render():
     else:
         st.info("Not configured — using the local model. Run the scripts in `azure_ml/` "
                 "(see docs/deployment_guide.md) to deploy a managed online endpoint.")
+    if azure_control.configured():
+        _deployment_panel(user)
     s = scoring.status
     c1, c2, c3 = st.columns(3)
     c1.metric("Active backend", s.backend)

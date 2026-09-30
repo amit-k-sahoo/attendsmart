@@ -9,6 +9,7 @@ runs out of the box.
 """
 
 import os
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -23,8 +24,25 @@ if load_dotenv:
     load_dotenv(ROOT / ".env", override=False)
 
 
+def _secret(name):
+    """Streamlit Cloud secrets: top-level keys are env vars already; this also finds
+    keys pasted under a [section] header. Only tried inside a running Streamlit app."""
+    if "streamlit" not in sys.modules:
+        return ""
+    try:
+        secrets = sys.modules["streamlit"].secrets
+        if name in secrets:
+            return str(secrets[name])
+        for value in secrets.values():
+            if hasattr(value, "get") and name in value:
+                return str(value[name])
+    except Exception:  # no secrets file, etc.
+        pass
+    return ""
+
+
 def _env(name, default=""):
-    return os.environ.get(name, default).strip()
+    return (os.environ.get(name) or _secret(name) or default).strip()
 
 
 @dataclass(frozen=True)
