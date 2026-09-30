@@ -27,12 +27,13 @@ def _client():
     if _sessions_client is None:
         from google.cloud import dialogflow  # imported lazily; optional dependency
         blob = os.environ.get("GOOGLE_CREDENTIALS_JSON", "").strip()
+        # REST, not gRPC: gRPC calls hang (504) in hosted containers such as Streamlit Cloud.
         if blob:  # hosted (e.g. Streamlit Cloud): key supplied as a secret, not a file
             from google.oauth2 import service_account
             creds = service_account.Credentials.from_service_account_info(json.loads(blob))
-            _sessions_client = dialogflow.SessionsClient(credentials=creds)
+            _sessions_client = dialogflow.SessionsClient(credentials=creds, transport="rest")
         else:
-            _sessions_client = dialogflow.SessionsClient()
+            _sessions_client = dialogflow.SessionsClient(transport="rest")
     return _sessions_client
 
 
@@ -56,7 +57,7 @@ def detect_intent(text: str, session_id: str, identity: dict) -> dict:
                                           language_code=settings.dialogflow_language)),
             "query_params": dialogflow.QueryParameters(payload=payload),
         },
-        timeout=15,
+        timeout=8,
     )
     qr = response.query_result
     webhook_ok = response.webhook_status.code == 0 if response.webhook_status else True
