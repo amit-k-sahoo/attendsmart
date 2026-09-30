@@ -29,7 +29,11 @@ INTENTS = [
         name="CheckMyRisk",
         phrases=["am I at risk", "am I flagged", "what's my risk score",
                  "will I lose eligibility", "is my attendance a problem",
-                 "am I in danger of falling below 75 percent"],
+                 "am I in danger of falling below 75 percent",
+                 "what's my attendance risk", "what is my attendance risk",
+                 "what is my risk", "check my risk", "my risk level",
+                 "how risky is my attendance", "am I at risk of losing eligibility",
+                 "what's my risk of falling short"],
         response="Let me check your current risk prediction.",
     ),
     dict(
