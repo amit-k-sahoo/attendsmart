@@ -22,7 +22,7 @@ unavailable.
   `DefaultAzureCredential`, which reuses that login. In CI, set
   `AZURE_CLIENT_ID`, `AZURE_TENANT_ID` and `AZURE_CLIENT_SECRET` for a
   service principal instead.
-- Enough vCPU quota for one `Standard_DS3_v2` instance in your region. You
+- Enough vCPU quota for one `Standard_DS2_v2` instance (Azure reserves 2x its vCPUs for updates) in your region. You
   can check this under *Quotas* in ML Studio.
 
 Add these to `.env`:
@@ -93,12 +93,15 @@ times out, the app falls back to the local model and says so on screen.
 To route traffic during a blue/green rollout, set `AZUREML_DEPLOYMENT=green`.
 The client then sends the `azureml-model-deployment` header.
 
-### A5. Tear down (important: endpoints bill hourly)
+### A5. Stop billing (important: the deployment bills hourly)
 ```bash
-python azure_ml/teardown.py
+python azure_ml/teardown.py          # or: ./attendsmart.sh stop
 ```
-The model, data asset and job history are kept. To bring the endpoint back,
-run A3 again.
+This deletes only the deployment. The endpoint keeps its scoring URL and key, so
+`.env` and Streamlit Cloud secrets never need updating; run A3 (or
+`./attendsmart.sh start`) to bring scoring back at the same address. Add
+`--delete-endpoint` to remove the endpoint as well. The model, data asset and
+job history are always kept.
 
 ---
 

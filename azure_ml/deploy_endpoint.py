@@ -9,8 +9,8 @@ explanations in exactly the shape the dashboard/chatbot expect.
   python azure_ml/deploy_endpoint.py --local-model   # skip Azure training, deploy ml/model.joblib
 
 --write-env stores AZUREML_ENDPOINT_URL / AZUREML_ENDPOINT_KEY in .env so the
-app switches to live Azure scoring on next start. Endpoints bill while they
-exist — run azure_ml/teardown.py when you're done demoing.
+app switches to live Azure scoring on next start. The deployment bills while it
+exists — run azure_ml/teardown.py (keeps the endpoint URL/key) when you're done.
 """
 
 import argparse
@@ -31,7 +31,7 @@ def main():
     ap.add_argument("--model-version", help="Registered model version (default: latest)")
     ap.add_argument("--local-model", action="store_true",
                     help="Register and deploy the locally trained ml/model.joblib")
-    ap.add_argument("--instance-type", default="Standard_DS3_v2")
+    ap.add_argument("--instance-type", default="Standard_DS2_v2")
     ap.add_argument("--write-env", action="store_true",
                     help="Write the scoring URL + key into .env")
     args = ap.parse_args()
