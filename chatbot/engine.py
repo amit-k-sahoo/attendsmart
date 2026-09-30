@@ -57,7 +57,7 @@ class ChatEngine:
             except Exception as exc:
                 log.warning("Dialogflow unavailable, using local NLU: %s", exc)
                 res = self._local(message)
-                res["source"] = "local (Dialogflow unreachable)"
+                res["source"] = f"local (Dialogflow unreachable: {type(exc).__name__}: {str(exc)[:120]})"
                 return res
         return self._local(message)
 
