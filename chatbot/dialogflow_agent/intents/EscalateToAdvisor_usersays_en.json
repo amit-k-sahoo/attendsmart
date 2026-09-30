@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1ecb7a3a-0893-4a07-bd36-5ea554d40a04",
+    "data": [
+      {
+        "text": "talk to a human",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "8005c4ef-2653-4b57-8167-899088299161",
+    "data": [
+      {
+        "text": "connect me to my advisor",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "47e7c41d-697b-41be-88bf-9d02d66a5a77",
+    "data": [
+      {
+        "text": "I need help",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "5d44549b-b36a-451a-a7be-76abb5d3cd83",
+    "data": [
+      {
+        "text": "escalate this",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "1c108200-8c1f-46d1-a527-4c6df473912f",
+    "data": [
+      {
+        "text": "can I speak to someone",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "639ec2d5-a75d-45fa-a450-e4dc0143291e",
+    "data": [
+      {
+        "text": "get me a counselor",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  }
+]

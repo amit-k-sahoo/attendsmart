@@ -1,0 +1,62 @@
+[
+  {
+    "id": "2d679c91-3610-4f32-af91-2e132b2bc6a9",
+    "data": [
+      {
+        "text": "is my data safe",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "04847f9e-1ce1-4d19-83fd-57264eed293a",
+    "data": [
+      {
+        "text": "what data do you collect",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "967d7cb7-c3b5-4c6b-b9ea-1d6140203d24",
+    "data": [
+      {
+        "text": "how is my data protected",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "cfbd4306-f5ff-40cd-8720-5f45c9f37090",
+    "data": [
+      {
+        "text": "data privacy",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "b071073f-3b92-4806-8658-2d835c55045b",
+    "data": [
+      {
+        "text": "is this DPDP compliant",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  }
+]

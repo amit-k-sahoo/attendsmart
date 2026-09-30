@@ -1,0 +1,40 @@
+{
+  "id": "b8409327-c710-4ec2-9db6-d3bb71aa0951",
+  "name": "WhyFlagged",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": false,
+          "dataType": "@student_name",
+          "name": "student_name",
+          "value": "$student_name",
+          "isList": false,
+          "prompts": [],
+          "id": "ac006e96-af58-4b5f-99d0-6f7ecc681f14"
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "Here's a breakdown of the top factors behind the risk score."
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

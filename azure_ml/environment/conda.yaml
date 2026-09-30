@@ -1,0 +1,16 @@
+name: attendsmart-sklearn-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      # Keep scikit-learn in step with requirements.txt so a locally trained
+      # model.joblib (deploy_endpoint.py --local-model) unpickles cleanly.
+      - scikit-learn==1.9.1
+      - pandas>=2.2
+      - numpy>=1.26
+      - joblib>=1.4
+      - mlflow
+      - azureml-mlflow
+      - azureml-inference-server-http

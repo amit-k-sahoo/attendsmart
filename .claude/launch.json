@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "attendsmart-app",
+      "runtimeExecutable": ".venv/bin/streamlit",
+      "runtimeArgs": ["run", "app/attendsmart_app.py", "--server.headless=true", "--server.port=8502"],
+      "port": 8502
+    },
+    {
+      "name": "attendsmart-api",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["api.main:app", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}

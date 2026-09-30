@@ -1,0 +1,17 @@
+# Core app + API
+numpy>=2.0
+pandas>=2.2
+scikit-learn==1.9.1   # keep in step with azure_ml/environment/conda.yaml
+joblib>=1.4
+streamlit>=1.40
+plotly>=5.20
+fastapi>=0.115
+uvicorn>=0.30
+pydantic>=2.7
+requests>=2.32
+python-dotenv>=1.0
+
+# Cloud integrations (imported lazily; the app runs without them configured)
+azure-ai-ml>=1.20       # Azure ML SDK v2 — azure_ml/ scripts
+azure-identity>=1.17
+google-cloud-dialogflow>=2.30

@@ -1,0 +1,64 @@
+{
+  "features": [
+    "consecutive_absences_early",
+    "attendance_trend_early",
+    "late_arrival_pct_early",
+    "avg_quiz_score_early",
+    "assignment_submission_rate_early",
+    "avg_lms_logins_early",
+    "avg_forum_posts_early"
+  ],
+  "target": "risk_label",
+  "model_type": "LogisticRegression (StandardScaler-normalized, class_weight=balanced)",
+  "coefficients": {
+    "consecutive_absences_early": 0.3727,
+    "attendance_trend_early": 0.1946,
+    "late_arrival_pct_early": -0.1888,
+    "avg_quiz_score_early": -0.9477,
+    "assignment_submission_rate_early": 0.2371,
+    "avg_lms_logins_early": -0.4034,
+    "avg_forum_posts_early": -0.2398
+  },
+  "intercept": 0.0603,
+  "feature_means_": {
+    "consecutive_absences_early": 1.744,
+    "attendance_trend_early": -0.09,
+    "late_arrival_pct_early": 0.009,
+    "avg_quiz_score_early": 72.836,
+    "assignment_submission_rate_early": 0.795,
+    "avg_lms_logins_early": 6.303,
+    "avg_forum_posts_early": 1.005
+  },
+  "feature_scales_": {
+    "consecutive_absences_early": 1.214,
+    "attendance_trend_early": 0.318,
+    "late_arrival_pct_early": 0.032,
+    "avg_quiz_score_early": 14.693,
+    "assignment_submission_rate_early": 0.212,
+    "avg_lms_logins_early": 1.634,
+    "avg_forum_posts_early": 0.458
+  },
+  "loo_cv_metrics": {
+    "accuracy": 0.615,
+    "precision": 0.611,
+    "recall": 0.579,
+    "f1": 0.595,
+    "roc_auc": 0.75,
+    "confusion_matrix": [
+      [
+        13,
+        7
+      ],
+      [
+        8,
+        11
+      ]
+    ],
+    "n": 39,
+    "validation_method": "Leave-One-Out cross-validation (appropriate given the small 39-student demo cohort; a held-out test split would be too small/noisy to trust)."
+  },
+  "risk_threshold_used_for_label": 0.75,
+  "positive_class_meaning": "1 = predicted to fall below 75% attendance in the back half of the term",
+  "trained_on_rows": 39,
+  "azure_ml_equivalent": "Two-Class Logistic Regression module in Azure ML Designer, or AutoML classification job targeting risk_label with the same feature columns."
+}

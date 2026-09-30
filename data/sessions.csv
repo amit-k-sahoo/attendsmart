@@ -1,0 +1,21 @@
+session_id,course_id,session_index,week_number,session_date,topic
+SES001,CDAIO-AI-201,1,1,2026-07-06,Session 1 of AI & Data Systems - Capstone Module
+SES002,CDAIO-AI-201,2,1,2026-07-08,Session 2 of AI & Data Systems - Capstone Module
+SES003,CDAIO-AI-201,3,2,2026-07-11,Session 3 of AI & Data Systems - Capstone Module
+SES004,CDAIO-AI-201,4,2,2026-07-13,Session 4 of AI & Data Systems - Capstone Module
+SES005,CDAIO-AI-201,5,3,2026-07-16,Session 5 of AI & Data Systems - Capstone Module
+SES006,CDAIO-AI-201,6,3,2026-07-18,Session 6 of AI & Data Systems - Capstone Module
+SES007,CDAIO-AI-201,7,4,2026-07-21,Session 7 of AI & Data Systems - Capstone Module
+SES008,CDAIO-AI-201,8,4,2026-07-23,Session 8 of AI & Data Systems - Capstone Module
+SES009,CDAIO-AI-201,9,5,2026-07-26,Session 9 of AI & Data Systems - Capstone Module
+SES010,CDAIO-AI-201,10,5,2026-07-28,Session 10 of AI & Data Systems - Capstone Module
+SES011,CDAIO-AI-201,11,6,2026-07-31,Session 11 of AI & Data Systems - Capstone Module
+SES012,CDAIO-AI-201,12,6,2026-08-02,Session 12 of AI & Data Systems - Capstone Module
+SES013,CDAIO-AI-201,13,7,2026-08-05,Session 13 of AI & Data Systems - Capstone Module
+SES014,CDAIO-AI-201,14,7,2026-08-07,Session 14 of AI & Data Systems - Capstone Module
+SES015,CDAIO-AI-201,15,8,2026-08-10,Session 15 of AI & Data Systems - Capstone Module
+SES016,CDAIO-AI-201,16,8,2026-08-12,Session 16 of AI & Data Systems - Capstone Module
+SES017,CDAIO-AI-201,17,9,2026-08-15,Session 17 of AI & Data Systems - Capstone Module
+SES018,CDAIO-AI-201,18,9,2026-08-17,Session 18 of AI & Data Systems - Capstone Module
+SES019,CDAIO-AI-201,19,10,2026-08-20,Session 19 of AI & Data Systems - Capstone Module
+SES020,CDAIO-AI-201,20,10,2026-08-22,Session 20 of AI & Data Systems - Capstone Module

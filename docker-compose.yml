@@ -1,0 +1,16 @@
+# App (Streamlit) + API (Dialogflow webhook, /score) sharing one SQLite volume.
+#   docker compose up --build
+services:
+  app:
+    build: .
+    env_file: .env
+    ports: ["8501:8501"]
+    volumes: ["attendsmart-data:/app/instance"]
+  api:
+    build: .
+    env_file: .env
+    command: ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports: ["8000:8000"]
+    volumes: ["attendsmart-data:/app/instance"]
+volumes:
+  attendsmart-data:

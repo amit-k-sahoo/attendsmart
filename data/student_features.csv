@@ -1,0 +1,40 @@
+student_id,name,city,work_experience_years,prior_module_score_pct,attendance_pct_early,attendance_trend_early,consecutive_absences_early,late_arrival_pct_early,avg_quiz_score_early,assignment_submission_rate_early,avg_lms_logins_early,avg_forum_posts_early,attendance_pct_actual_late_window,risk_label,risk_tier
+S001,Thirunavukarasu Jayavelu,Mumbai,10,88.2,0.583,-0.25,2,0.0,61.3,0.833,3.17,1.0,0.125,1,High
+S002,Manikya Rao Segu,Bengaluru,2,82.6,0.75,0.25,2,0.0,83.8,1.0,7.5,0.83,0.5,1,High
+S003,Jayaprakash Mahankali,Hyderabad,2,74.6,0.583,0.0,1,0.0,90.6,1.0,8.0,2.17,1.0,0,Low
+S004,Ajay Kumar S V,Chennai,8,71.4,0.583,-0.5,2,0.0,40.7,0.5,3.0,0.17,0.125,1,High
+S005,Manoj Kumar,Chennai,5,98.0,0.5,-0.5,4,0.0,56.6,0.667,4.33,1.0,0.625,1,High
+S006,Kumar Kanishka,Pune,11,71.3,0.833,0.5,1,0.083,79.4,0.833,7.17,1.0,0.625,1,High
+S007,Suyash Jain,Mumbai,3,67.9,0.667,-0.5,3,0.0,56.7,0.667,3.67,0.83,0.25,1,High
+S008,Abhijit Wagh,Kochi,10,68.4,0.75,-0.25,2,0.167,74.4,1.0,8.0,0.67,0.875,0,Medium
+S009,Prakash Bhawnani,Mumbai,7,73.4,0.667,0.0,2,0.0,53.3,0.5,6.33,0.83,0.5,1,High
+S010,Deepak Khandelwal,Coimbatore,28,65.7,0.917,0.25,1,0.0,81.8,1.0,6.83,1.17,0.875,0,Medium
+S011,Nikhilesh Kumar,Kolkata,17,72.0,0.667,-0.25,4,0.0,68.8,0.667,6.17,0.67,0.5,1,High
+S012,Duraimurugan Kandasamy,Bengaluru,14,84.4,0.917,-0.25,1,0.0,91.4,0.833,8.5,1.67,1.0,0,Low
+S013,Gagan Chawla,Bengaluru,12,67.7,0.75,0.25,2,0.0,82.8,0.667,5.17,1.17,1.0,0,Low
+S014,Amit Kumar Sahoo,Mumbai,4,70.2,0.333,0.0,4,0.0,38.6,0.333,4.33,0.5,0.0,1,High
+S015,Manish Madan Sharma,Chennai,12,73.8,1.0,0.0,0,0.0,94.4,0.833,8.0,0.83,1.0,0,Low
+S016,Rajesh Manoharan,Chennai,11,76.7,0.75,0.25,1,0.083,81.9,0.833,5.67,0.67,0.75,0,Medium
+S017,Hari Nair,Kochi,15,66.8,0.917,-0.25,1,0.0,89.0,1.0,7.33,1.5,1.0,0,Low
+S018,Adesh Kumar Tripathi,Coimbatore,7,68.9,0.917,0.25,1,0.0,91.4,1.0,8.0,1.33,1.0,0,Low
+S019,Sivajothi Gunasekaran,Bengaluru,12,78.8,0.833,0.25,1,0.0,69.1,1.0,5.33,1.83,0.5,1,High
+S020,Ayush Taliwal,Kochi,16,62.9,0.917,0.0,1,0.0,86.6,1.0,7.0,0.5,0.5,1,High
+S021,Ravi Kumar,Chennai,15,85.7,0.75,0.0,1,0.0,65.0,0.5,5.17,0.67,0.875,0,Medium
+S022,Arvind Suryanarayanan,Kochi,13,81.6,0.333,-0.25,4,0.0,58.0,0.667,5.83,0.67,0.5,1,High
+S023,Milan Gupta,Kolkata,7,84.4,1.0,0.0,0,0.0,93.5,1.0,9.5,1.33,0.875,0,Medium
+S024,Swaroop Madakasira,Chennai,7,66.7,0.333,-0.75,5,0.0,58.0,0.833,3.83,0.83,0.5,1,High
+S025,Karthick E,Ahmedabad,19,61.3,0.5,0.0,2,0.0,76.5,0.833,8.0,1.0,0.875,0,Medium
+S026,Randhir Singh,Coimbatore,10,80.4,1.0,0.0,0,0.0,88.7,0.833,7.0,1.33,1.0,0,Low
+S027,Ayush Saxena,Hyderabad,4,65.7,0.667,-0.5,2,0.0,76.0,1.0,7.0,1.17,0.625,1,High
+S028,Manish,Bengaluru,17,74.5,0.5,0.75,3,0.0,49.5,0.667,4.5,0.17,0.25,1,High
+S029,Sandeep Chauhan,Pune,8,78.6,0.667,-0.75,3,0.0,74.8,1.0,6.5,0.67,0.75,0,Medium
+S030,Kannan Arumugam,Kolkata,6,60.5,1.0,0.0,0,0.0,81.6,1.0,9.33,0.67,0.875,0,Medium
+S031,Ankush Arora,Delhi NCR,13,69.8,0.833,-0.5,1,0.0,72.6,1.0,7.5,0.83,0.375,1,High
+S032,J Pravin Kumar,Hyderabad,23,90.6,0.75,-0.25,2,0.0,70.6,0.833,4.83,1.0,0.75,0,Medium
+S033,Hiteshchandra Patel,Pune,8,66.9,0.833,-0.25,1,0.0,85.2,0.833,7.17,1.5,0.875,0,Medium
+S034,Raghuraj Deshpande,Chennai,20,77.6,0.5,-0.25,2,0.0,73.8,1.0,6.83,1.0,0.75,0,Medium
+S035,Krishna Kumar Subramanian,Delhi NCR,17,67.4,0.833,0.0,1,0.0,71.3,0.333,5.33,0.67,0.625,1,High
+S036,Snehal R Singh,Mumbai,5,73.1,0.583,-0.25,1,0.0,46.3,0.333,4.0,0.67,0.25,1,High
+S037,Mirle Seetharamu Manjunath,Mumbai,9,84.5,0.917,0.0,1,0.0,78.4,1.0,7.0,1.83,0.625,1,High
+S038,Jayanthi Mani,Kolkata,2,85.5,0.75,0.25,2,0.0,80.0,0.667,6.67,2.0,0.875,0,Medium
+S039,Prakshi Bansal,Mumbai,9,75.9,0.833,0.0,1,0.0,68.2,0.5,6.33,0.83,0.875,0,Medium

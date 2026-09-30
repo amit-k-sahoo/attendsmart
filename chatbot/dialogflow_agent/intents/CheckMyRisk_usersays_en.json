@@ -1,0 +1,74 @@
+[
+  {
+    "id": "9fb1f0a0-1ab6-4445-9305-c81485c09184",
+    "data": [
+      {
+        "text": "am I at risk",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "1051618c-0f39-4482-8f46-074b11026b44",
+    "data": [
+      {
+        "text": "am I flagged",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "5cd15296-a2a1-4c3e-9571-895f9f4bd4a4",
+    "data": [
+      {
+        "text": "what's my risk score",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "13969d8c-3022-4b2c-b572-741232e5007c",
+    "data": [
+      {
+        "text": "will I lose eligibility",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "4845dd9a-01b7-4966-856b-59b6f44e1b80",
+    "data": [
+      {
+        "text": "is my attendance a problem",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "0f52b110-fcbc-4fca-997e-a2134294d132",
+    "data": [
+      {
+        "text": "am I in danger of falling below 75 percent",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  }
+]

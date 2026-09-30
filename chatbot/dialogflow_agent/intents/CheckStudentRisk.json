@@ -1,0 +1,45 @@
+{
+  "id": "9e3f4c6e-8b5c-45db-8a63-43517d83383d",
+  "name": "CheckStudentRisk",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@student_name",
+          "name": "student_name",
+          "value": "$student_name",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Which participant would you like to check?"
+            }
+          ],
+          "id": "fb726f1b-698c-4f17-8965-ea244bf2b2bc"
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "Looking up that participant's risk status. (Advisor access required.)"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

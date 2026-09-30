@@ -1,0 +1,62 @@
+[
+  {
+    "id": "d9e22eed-3fff-4d88-b0a3-5a902da8b167",
+    "data": [
+      {
+        "text": "how does the prediction work",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "b9055fdd-aaa4-464f-88d3-082aaedc829c",
+    "data": [
+      {
+        "text": "what model do you use",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "55754512-eed7-42bf-8f89-fee1d0e4892a",
+    "data": [
+      {
+        "text": "how is risk calculated",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "8a13aa1e-e9c2-41c7-9f35-5418c9cfda74",
+    "data": [
+      {
+        "text": "explain the algorithm",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "e317b93e-3953-4d86-858f-4de77a79ed5f",
+    "data": [
+      {
+        "text": "what data does the model use",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  }
+]

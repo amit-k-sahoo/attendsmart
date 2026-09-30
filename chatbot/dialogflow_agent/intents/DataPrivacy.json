@@ -1,0 +1,30 @@
+{
+  "id": "5afb344f-dd94-4865-8482-7e377b193f18",
+  "name": "DataPrivacy",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "All figures in this demo are synthetic. In production this data would be governed under the DPDP Act 2023 with role-based access and consent."
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

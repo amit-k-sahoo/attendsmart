@@ -1,0 +1,14 @@
+{
+  "course_id": "CDAIO-AI-201",
+  "course_name": "AI & Data Systems - Capstone Module",
+  "instructor": "Prof. R. Menon",
+  "term_start": "2026-07-06",
+  "weeks": 10,
+  "sessions_per_week": 2,
+  "total_sessions": 20,
+  "early_window_sessions": 12,
+  "late_window_sessions": 8,
+  "risk_threshold": 0.75,
+  "n_students": 39,
+  "data_note": "100% SYNTHETIC DEMO DATA. Only participant names are real; all attendance, engagement, quiz and risk figures are randomly generated."
+}

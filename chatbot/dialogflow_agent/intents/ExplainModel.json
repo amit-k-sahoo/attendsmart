@@ -1,0 +1,30 @@
+{
+  "id": "aa440584-4a2e-4234-9c9c-dd34633def96",
+  "name": "ExplainModel",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "I use a logistic regression model trained on early-term attendance, quiz scores, LMS logins and engagement to predict late-term risk."
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

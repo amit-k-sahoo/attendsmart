@@ -1,0 +1,29 @@
+{
+  "description": "AttendSmart - Attendance Risk Assistant (IIT Kanpur CDAIO Smart Classroom Challenge, Group 9)",
+  "language": "en",
+  "shortDescription": "",
+  "examples": "",
+  "linkToDocs": "",
+  "displayName": "AttendSmart",
+  "disableInteractionLogs": false,
+  "disableStackdriverLogs": true,
+  "defaultTimezone": "Asia/Kolkata",
+  "webhook": {
+    "url": "https://YOUR-API-HOST/dialogflow/webhook",
+    "headers": {},
+    "available": true,
+    "useForDomains": false,
+    "cloudFunctionsEnabled": false,
+    "cloudFunctionsInitialized": false
+  },
+  "isPrivate": true,
+  "customClassifierMode": "use.after",
+  "mlMinConfidence": 0.3,
+  "supportedLanguages": [],
+  "onePlatformApiVersion": "v2",
+  "analyzeQueryTextSentiment": false,
+  "enabledKnowledgeBaseNames": [],
+  "knowledgeServiceConfidenceAdjustment": -0.4,
+  "dialogflowHistoryEnabled": false,
+  "predictionRequestHistoryEnabled": true
+}

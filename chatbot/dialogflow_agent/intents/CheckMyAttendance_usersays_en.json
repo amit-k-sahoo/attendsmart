@@ -1,0 +1,74 @@
+[
+  {
+    "id": "c8c48d57-b9d1-4191-8d01-cb4a679e732a",
+    "data": [
+      {
+        "text": "what's my attendance",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "67a5b8f3-90ed-49e6-8d4b-3620e8ca0d56",
+    "data": [
+      {
+        "text": "how many classes have I missed",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "31ad408d-61db-407a-8ab7-b2171cb01226",
+    "data": [
+      {
+        "text": "what is my attendance percentage",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "b12d8458-89ac-4d89-807b-8cb8ef1bcfc1",
+    "data": [
+      {
+        "text": "show my attendance",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "02178b4e-bd15-4509-a3bb-36e0329871a0",
+    "data": [
+      {
+        "text": "how am I doing on attendance",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  },
+  {
+    "id": "51e0b3df-7737-4119-abe1-9d5f06503c87",
+    "data": [
+      {
+        "text": "have I missed many sessions",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1790393100275
+  }
+]
