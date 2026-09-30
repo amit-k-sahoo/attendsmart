@@ -55,11 +55,13 @@ cp .env.example .env        # then set ATTENDSMART_SECRET_KEY
 streamlit run app/attendsmart_app.py
 ```
 
-The first run creates `instance/attendsmart.db` and five demo accounts: one
-admin, one advisor, and three students with High, Medium and Low risk. Their
-passwords are written to `instance/demo_credentials.txt`, which is gitignored.
-The other 36 roster participants can self-register on the **Create account**
-tab using their student ID (for example `S012`).
+The first run creates `instance/attendsmart.db` with an admin, an advisor and
+one student account per roster participant. Student logins are the roster ID
+as an email (`s001@attendsmart.demo` … `s039@attendsmart.demo`) with the shared
+demo password `password123` (override with `ATTENDSMART_STUDENT_PASSWORD`).
+Staff passwords come from `ATTENDSMART_DEMO_PASSWORD`, or are random and written
+to `instance/demo_credentials.txt`, which is gitignored. Use a real password
+for anything beyond a demo.
 
 Reset to a clean demo at any time:
 

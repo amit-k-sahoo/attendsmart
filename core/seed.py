@@ -4,12 +4,14 @@ AttendSmart — create the database and demo accounts.
   python -m core.seed            # idempotent; only creates what's missing
   python -m core.seed --reset    # wipe the database first (fresh demo)
 
-Creates one admin, one advisor and three student accounts (one per risk
-tier, so every dashboard state can be demoed). The remaining roster
-participants are left unclaimed so self-registration can be shown live.
+Creates one admin, one advisor and one student account per roster
+participant, with sample login IDs of the form s001@attendsmart.demo
+(matching the roster student ID).
 
-Passwords come from ATTENDSMART_DEMO_PASSWORD if set, otherwise a random
-one is generated per account. Either way they are written to
+Staff passwords come from ATTENDSMART_DEMO_PASSWORD if set, otherwise a random
+one is generated per account. Student accounts share the demo password
+ATTENDSMART_STUDENT_PASSWORD (default "password123") — demo data only; change
+it for anything shared beyond a demo. Credentials are written to
 instance/demo_credentials.txt (gitignored) — never committed.
 """
 
@@ -25,21 +27,16 @@ CREDENTIALS_FILE = settings.db_path.parent / "demo_credentials.txt"
 DEMO_DOMAIN = "attendsmart.demo"
 
 
-def _email_for(name):
-    parts = [p.lower() for p in name.split() if p.isalpha() and len(p) > 1]
-    return f"{parts[0]}.{parts[-1]}@{DEMO_DOMAIN}" if len(parts) > 1 else f"{parts[0]}@{DEMO_DOMAIN}"
+def _email_for(student_id):
+    return f"{student_id.lower()}@{DEMO_DOMAIN}"
+
+
+def _student_password():
+    return os.environ.get("ATTENDSMART_STUDENT_PASSWORD") or "password123"
 
 
 def _password():
     return os.environ.get("ATTENDSMART_DEMO_PASSWORD") or (secrets.token_urlsafe(10) + "-7")
-
-
-def _pick_students_by_tier():
-    preds = sorted(scoring.predict_all(), key=lambda p: -p["risk_probability"])
-    picks = {}
-    for p in preds:
-        picks.setdefault(p["risk_tier"], p)
-    return [picks[t] for t in ("High", "Medium", "Low") if t in picks]
 
 
 def seed(reset=False) -> list:
@@ -56,15 +53,15 @@ def seed(reset=False) -> list:
         ("advisor", f"r.menon@{DEMO_DOMAIN}", "Prof. R. Menon", None),
     ]
     claimed = auth.claimed_student_ids()
-    for p in _pick_students_by_tier():
-        if p["student_id"] not in claimed:
-            accounts.append(("student", _email_for(p["name"]), p["name"], p["student_id"]))
+    for sid, name in sorted(scoring.roster().items()):
+        if sid not in claimed:
+            accounts.append(("student", _email_for(sid), name, sid))
 
     created = []
     for role, email, name, sid in accounts:
         if email in existing:
             continue
-        password = _password()
+        password = _student_password() if role == "student" else _password()
         auth.create_user(email, name, password, role=role, student_id=sid)
         created.append((role, email, password, sid))
 

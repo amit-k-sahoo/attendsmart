@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import streamlit as st
 
 from auth_state import sign_in
@@ -11,7 +13,8 @@ def render():
     meta = course_meta()
     _, mid, _ = st.columns([1, 1.4, 1])
     with mid:
-        st.markdown("## 🎓 AttendSmart")
+        st.image(str(Path(__file__).resolve().parent.parent / "static" / "iitk_logo.png"))
+        st.markdown("## AttendSmart")
         st.caption(f"Attendance-risk early warning · {meta['course_name']}")
         if msg := st.session_state.pop("flash", None):
             st.info(msg)
@@ -33,8 +36,8 @@ def render():
                 else:
                     sign_in(user)
                     st.rerun()
-            st.caption("Demo accounts are created on first run — see "
-                       "`instance/demo_credentials.txt`.")
+            st.caption("Demo student logins: `s001@attendsmart.demo` … `s039@attendsmart.demo` "
+                       "(the ID matches the roster student ID).")
 
         with tab_up:
             if not settings.allow_self_signup:

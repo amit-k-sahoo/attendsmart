@@ -26,7 +26,11 @@ from core.seed import ensure_seeded  # noqa: E402
 from views import (account, assistant, cohort, governance, login, model_card,  # noqa: E402
                    participant, queue, student_home, system, users)
 
-st.set_page_config(page_title="AttendSmart", page_icon="🎓", layout="wide")
+STATIC = Path(__file__).resolve().parent / "static"
+
+st.set_page_config(page_title="AttendSmart · IIT Kanpur",
+                   page_icon=str(STATIC / "iitk_emblem.png"), layout="wide")
+st.logo(str(STATIC / "iitk_logo.png"), icon_image=str(STATIC / "iitk_emblem.png"), size="large")
 
 
 @st.cache_resource
@@ -76,7 +80,7 @@ else:
 st.session_state.pages = pages
 
 with st.sidebar:
-    st.markdown("### 🎓 AttendSmart")
+    st.markdown("### AttendSmart")
     st.caption(course_meta()["course_name"])
     st.markdown(f"**{user.full_name}**  \n`{user.role}`"
                 + (f" · {user.student_id}" if user.student_id else ""))
