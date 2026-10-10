@@ -9,3 +9,5 @@ ml/azure_artifacts/
 *.json.key
 gcp-*.json
 .run/
+
+.streamlit/secrets.toml
